@@ -8,12 +8,11 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
 gem 'bootswatch-rails'
-gem 'letter_opener', :group => :development
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'
@@ -21,6 +20,7 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -31,6 +31,8 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'better_errors'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

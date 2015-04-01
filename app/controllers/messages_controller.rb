@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
       flash[:notice] = "SMS sent!"
       redirect_to messages_path
     else
+      flash[:alert] = "Fix the phone number!"
       render :new
     end
   end
@@ -26,5 +27,4 @@ private
   def message_params
     params.require(:message).permit(:to, :body).merge(from: ENV['FROM_PHONE_NUMBER'])
   end
-
 end

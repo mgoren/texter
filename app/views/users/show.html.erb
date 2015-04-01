@@ -1,8 +1,8 @@
 <% if user_signed_in? && current_user == @user %>
-  <h1>
-    <%= @user.username %><br>
-    <small><%= @user.email %></small>
-  </h1>
+  <header>
+    <h1><%= @user.username %></h1>
+    <address><%= @user.email %></address>
+  </header>
 <% else %>
   You shall not pass!
 <% end %>

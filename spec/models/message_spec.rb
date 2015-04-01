@@ -18,4 +18,9 @@ describe Message, vcr: true do
     expect(message.save).to eq true
   end
 
+  it "normalizes a US phone number that includes the country code" do
+    message = FactoryGirl.build(:message, to: "+1 (917) 309-5698")
+    expect(message.save).to eq true
+  end
+
 end

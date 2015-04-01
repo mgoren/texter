@@ -1,7 +1,14 @@
 class Message < ActiveRecord::Base
+  before_validation :normalize_phone_number
   before_create :send_sms
 
 private
+  def normalize_phone_number
+    to.gsub(/[^0-9]/, "")
+    if to.length == 11 && to.first == "1"
+      to = to[1..10]
+    end
+  end
 
   def send_sms
     begin
@@ -18,5 +25,4 @@ private
       false
     end
   end
-
 end

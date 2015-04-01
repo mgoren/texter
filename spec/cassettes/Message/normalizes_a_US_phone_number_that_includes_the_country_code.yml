@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<twilio account sid>:<twilio auth token>@api.twilio.com/2010-04-01/Accounts/<twilio
+      account sid>/Messages.json
+    body:
+      encoding: US-ASCII
+      string: Body=Hello%20World!&To=%2B1%20(917)%20309-5698&From=<from phone number>
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 01 Apr 2015 22:38:28 GMT
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '745'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMa556c1a3b75d4af6a6c7d41fe37d806a", "date_created": "Wed,
+        01 Apr 2015 22:38:28 +0000", "date_updated": "Wed, 01 Apr 2015 22:38:28 +0000",
+        "date_sent": null, "account_sid": "<twilio account sid>", "to": "+19173095698",
+        "from": "+1<from phone number>", "body": "Hello World!", "status": "queued",
+        "num_segments": "1", "num_media": "0", "direction": "outbound-api", "api_version":
+        "2010-04-01", "price": null, "price_unit": "USD", "error_code": null, "error_message":
+        null, "uri": "/2010-04-01/Accounts/<twilio account sid>/Messages/SMa556c1a3b75d4af6a6c7d41fe37d806a.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<twilio account sid>/Messages/SMa556c1a3b75d4af6a6c7d41fe37d806a/Media.json"}}'
+    http_version: 
+  recorded_at: Wed, 01 Apr 2015 22:38:28 GMT
+recorded_with: VCR 2.9.3

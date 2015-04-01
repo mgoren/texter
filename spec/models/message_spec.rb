@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Message, vcr: true do
 
+  it { should belong_to :contact }
+
   it "sends a message" do
     message = FactoryGirl.build(:message)
     expect(message.save).to eq true

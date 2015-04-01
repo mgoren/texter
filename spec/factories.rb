@@ -10,4 +10,10 @@ FactoryGirl.define do
     email "username@domain.tld"
     password "password"
   end
+
+  factory :contact do
+    phone "555-555-5555"
+    user
+  end
+
 end

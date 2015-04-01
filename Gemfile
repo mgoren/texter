@@ -30,6 +30,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'better_errors'
 end
 
 group :production do

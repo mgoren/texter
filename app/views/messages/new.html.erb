@@ -1,0 +1,15 @@
+<h2>Send an SMS</h2>
+
+<%= bootstrap_form_for @message do |f| %>
+  <div class="field">
+    <%= f.telephone_field :to, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send" %>
+  </div>
+<% end %>

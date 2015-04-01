@@ -21,7 +21,7 @@ require 'rest-client'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -58,4 +58,6 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.filter_sensitive_data('<twilio account sid>') { ENV['TWILIO_ACCOUNT_SID'] }
   c.filter_sensitive_data('<twilio auth token>') { ENV['TWILIO_AUTH_TOKEN'] }
+  c.filter_sensitive_data('<from phone number>') { ENV['FROM_PHONE_NUMBER'] }
+  c.filter_sensitive_data('<to phone number>') { ENV['TO_PHONE_NUMBER'] }
 end

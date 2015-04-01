@@ -21,13 +21,14 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'pry'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 group :test do
-  gem 'capybara'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'better_errors'

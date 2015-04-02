@@ -22,7 +22,7 @@ describe "the contact creation process" do
     fill_in "Name", with: 'Generic Name'
     fill_in "Phone", with: "555-555-5555"
     click_button "Save Contact"
-    expect(page).to have_content "Some kind of error."
+    expect(page).to have_content "This contact is already in your phone book"
   end
 
   it "shows individual contact details" do

@@ -12,15 +12,26 @@ class ContactsController < ApplicationController
   end
 
   def create
+
     @contact = current_user.contacts.new(contact_params)
     @user = current_user
-    if @contact.save
-      flash[:notice] = "Contact saved!"
-      redirect_to user_path(current_user)
-    else
-      flash[:alert] = "Some kind of error."
+
+    @contact.normalize_phone_number
+    existing_contact = @user.contacts.find_by(phone: @contact.phone)
+
+    if existing_contact
+      flash[:alert] = "This contact is already in your phone book!"
       render 'new'
+    else
+      if @contact.save
+        flash[:notice] = "Contact saved!"
+        redirect_to user_path(current_user)
+      else
+        flash[:alert] = "Some kind of error."
+        render 'new'
+      end
     end
+    
   end
 
   def edit

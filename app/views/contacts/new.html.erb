@@ -1,15 +1,3 @@
 <h2>Add a Contact</h2>
 
-<%= bootstrap_form_for [@user, @contact] do |f| %>
-  <div class="field">
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.telephone_field :phone %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Save Contact" %>
-  </div>
-<% end %>
+<%= render 'form' %>

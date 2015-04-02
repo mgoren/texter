@@ -5,8 +5,4 @@ Rails.application.routes.draw do
     resources :contacts
   end
   resources :messages, only: [:new, :create, :show, :index]
-
-  # devise_scope :user do
-  #   root to: "devise/registrations#edit"
-  # end
 end

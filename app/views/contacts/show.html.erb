@@ -1,0 +1,4 @@
+<h1><%= @contact.name %></h1>
+<h2><%= @contact.phone %></h2>
+<%= link_to "Edit", edit_user_contact_path(@contact.user, @contact) %>
+<%= link_to "Delete", user_contact_path(@contact.user, @contact), method: :delete %>

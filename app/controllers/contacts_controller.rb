@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
 
+  before_action :authenticate_user
+
   def index
     @user = User.find(params[:user_id])
     @contacts = @user.contacts
@@ -27,15 +29,27 @@ class ContactsController < ApplicationController
   end
 
   def edit
-
+    @contact = Contact.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def update
-
+    @contact = Contact.find(params[:id])
+    @user = User.find(params[:user_id])
+    if @contact.update(contact_params)
+      flash[:notice] = @contact.name + " has been successfully edited."
+      redirect_to user_contact_path(@user, @contact)
+    else
+      render "edit"
+    end
   end
 
   def destroy
-
+    @contact = Contact.find(params[:id])
+    @user = User.find(params[:user_id])
+    flash[:notice] = @contact.name + " has been deleted from your life."
+    @contact.destroy
+    redirect_to user_path(@user)
   end
 
 private

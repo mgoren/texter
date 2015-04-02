@@ -1,8 +1,9 @@
-<% if user_signed_in? && current_user == @user %>
   <header>
     <h1><%= @user.username %></h1>
     <address><%= @user.email %></address>
   </header>
-<% else %>
-  You shall not pass!
-<% end %>
+
+  <section>
+    <h2>Contacts</h2>
+    <%= render @user.contacts %>
+  </section>

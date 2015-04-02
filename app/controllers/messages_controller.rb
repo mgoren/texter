@@ -12,6 +12,12 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    unless params[:phone] == nil
+      @contact = Contact.find_by(phone: params[:phone])
+      render :new_from_existing_phone
+    else
+      render :new
+    end
   end
 
   def create

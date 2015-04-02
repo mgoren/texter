@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    # @message = Message.new
     unless params[:phone] == nil
       @contact = Contact.find_by(phone: params[:phone])
       render :new_from_existing_phone
@@ -21,16 +21,25 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.contact = Contact.find_or_initialize_by(phone: @message.to)
-    @message.contact.user = current_user
-    if @message.save
-      flash[:notice] = "SMS sent!"
-      redirect_to user_contact_path(@message.contact.user, @message.contact)
-    else
-      flash[:alert] = "Fix the phone number!"
-      render :new
+    from = ENV['FROM_PHONE_NUMBER']
+    body = params[:body]
+    recipients = params[:to].split
+    stati = []
+
+    recipients.each do |recipient|
+      msg = Message.new(from: from, body: body, to: recipient)
+      msg.contact = Contact.find_or_initialize_by(phone: msg.to)
+      msg.contact.user = current_user
+      if msg.save
+        stati.push("SMS sent to " + recipient + " successfully!")
+      else
+        stati.push("SMS failed to " + recipient + ". :(")
+      end
     end
+
+    binding.pry
+    flash[:notice] = stati
+    redirect_to user_path(current_user)
   end
 
 private

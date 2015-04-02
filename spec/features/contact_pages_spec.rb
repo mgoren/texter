@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe "the contact creation process" do
-
   it "creates a contact" do
     user = FactoryGirl.create(:user)
     login(user)
@@ -27,7 +26,7 @@ describe "the contact creation process" do
   end
 
   it "shows individual contact details" do
-    contact = FactoryGirl.create(:contact, name: "foo")
+    contact = FactoryGirl.create(:contact)
     user = contact.user
     login(user)
     visit user_path(user)
@@ -36,7 +35,7 @@ describe "the contact creation process" do
   end
 
   it "edits contact details" do
-    contact = FactoryGirl.create(:contact, name: "foo")
+    contact = FactoryGirl.create(:contact)
     user = contact.user
     login(user)
     visit user_contact_path(user, contact)
@@ -47,12 +46,22 @@ describe "the contact creation process" do
   end
 
   it "destroys a contact" do
-    contact = FactoryGirl.create(:contact, name: "foo")
+    contact = FactoryGirl.create(:contact)
     user = contact.user
     login(user)
     visit user_contact_path(user, contact)
     click_on 'Delete'
     expect(page).to have_content "deleted"
   end
+end
 
+describe "how contacts and messages relate", vcr: true do
+  it "the message history on contact page" do
+    message = FactoryGirl.create(:message)
+    contact = message.contact
+    user = contact.user
+    login(user)
+    visit user_contact_path(user, contact)
+    expect(page).to have_content message.body
+  end
 end

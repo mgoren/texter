@@ -7,7 +7,7 @@ describe Contact do
   it { should validate_uniqueness_of :phone }
 
   it "passes validation without a name but with default empty name string" do
-    contact = FactoryGirl.create(:contact)
+    contact = FactoryGirl.create(:contact, name: "")
     expect(contact.name).to eq("")
   end
 

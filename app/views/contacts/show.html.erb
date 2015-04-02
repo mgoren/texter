@@ -2,3 +2,8 @@
 <h2><%= @contact.phone %></h2>
 <%= link_to "Edit", edit_user_contact_path(@contact.user, @contact) %>
 <%= link_to "Delete", user_contact_path(@contact.user, @contact), method: :delete %>
+
+<h3>Message History</h3>
+<ul class="list-unstyled">
+  <%= render @contact.messages %>
+</ul>

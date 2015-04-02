@@ -16,9 +16,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.contact = Contact.find_or_initialize_by(phone: @message.to)
+    @message.contact.user = current_user
     if @message.save
       flash[:notice] = "SMS sent!"
-      redirect_to messages_path
+      redirect_to user_contact_path(@message.contact.user, @message.contact)
     else
       flash[:alert] = "Fix the phone number!"
       render :new

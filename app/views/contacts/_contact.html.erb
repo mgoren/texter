@@ -1,3 +1,7 @@
 <p>
-  <%= link_to contact.name, user_contact_path(contact.user, contact) %>
+  <% unless contact.name == "" %>
+    <%= link_to contact.name, user_contact_path(contact.user, contact) %>
+  <% else %>
+    <%= link_to contact.phone, user_contact_path(contact.user, contact) %>
+  <% end %>
 </p>

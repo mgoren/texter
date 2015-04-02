@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     resources :contacts, except: [:index]
   end
-  resources :messages, only: [:new, :create, :show, :index]
+  resources :messages, only: [:new, :create, :show]
 end

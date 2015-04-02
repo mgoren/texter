@@ -1,15 +1,15 @@
 <h2>Send an SMS</h2>
 
-<%= bootstrap_form_for @message do |f| %>
-  <div class="field">
-    <%= f.hidden_field :to, value: @contact.phone %>
+<%= form_tag( "/messages", method: "post" ) do %>
+
+  <%= hidden_field_tag :to, @contact.phone %>
+
+  <div class="form-group">
+    <%= label_tag "Body" %><br>
+    <%= text_field_tag :body, nil, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.text_field :body, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send" %>
+  <div class="form-group">
+    <%= submit_tag "Send", :class => "btn btn-default" %>
   </div>
 <% end %>

@@ -1,8 +1,11 @@
   <header>
     <h1><%= @user.username %></h1>
     <address><%= @user.email %></address>
+    <% if @user.avatar_file_name %>
+      <%= image_tag @user.avatar.url(:thumb) %>
+    <% end %>
   </header>
-
+  <p><%= link_to "Edit your profile", edit_user_registration_path %></p>
   <section>
     <h2>Contacts</h2>
     <%= render @user.contacts %>

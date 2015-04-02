@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
 gem 'bootswatch-rails'
 gem 'rest-client'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'

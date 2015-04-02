@@ -49,7 +49,7 @@ class ContactsController < ApplicationController
 
 private
   def contact_params
-    params.require(:contact).permit(:name, :phone)
+    params.require(:contact).permit(:name, :phone, :avatar)
   end
 
 end
